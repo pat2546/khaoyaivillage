@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .welcome-section {
+        text-align: center;
+        padding: 20px 0;
+    }
+    .welcome-section h2 {
+        color: #2c5e2c;
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+    .welcome-section p {
+        font-size: 1.2em;
+        color: #555;
+    }
+    
+    /* สไตล์ส่วนติดต่อสอบถาม (Contact) */
+    .contact-card {
+        background-color: #f9fbf9;
+        border-radius: 15px;
+        padding: 30px;
+        margin-top: 40px;
+        border-left: 8px solid #2c5e2c;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        text-align: left;
+    }
+    .contact-info {
+        flex: 1;
+        min-width: 300px;
+    }
+    .contact-info h3 {
+        color: #2c5e2c;
+        margin-top: 0;
+        font-size: 1.5em;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 10px;
+    }
+    .info-item {
+        margin: 15px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .info-item b {
+        color: #333;
+        min-width: 80px;
+    }
+    
+    .tags-container {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+    .tag {
+        background: #e8f5e8;
+        color: #2c5e2c;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        border: 1px solid #c8e6c9;
+    }
+</style>
+
+<div class="welcome-section">
+    <h2>ยินดีต้อนรับสู่ KhaoYai Village Farm</h2>
+    <p>แหล่งเรียนรู้เชิงเกษตรและที่พักผ่อนหย่อนใจท่ามกลางธรรมชาติที่สมบูรณ์ที่สุดในเขาใหญ่</p>
+    
+    <div class="tags-container">
+        <span class="tag">#ฟาร์มแกะเขาใหญ่</span>
+        <span class="tag">#ฟาร์มกระต่าย</span>
+        <span class="tag">#ที่เที่ยวเขาใหญ่เปิดใหม่</span>
+        <span class="tag">#กิจกรรมครอบครัว</span>
+    </div>
+</div>
+
+<div class="contact-card">
+    <div class="contact-info">
+        <h3>📍 ข้อมูลการติดต่อ (Contact Us)</h3>
+        <div class="info-item">
+            <b>สถานที่:</b> 
+            <span>16 หมู่ 7 ถ.นิคมลำตะคอง ต.ขนงพระ <br> อ.ปากช่อง จ.นครราชสีมา 30130</span>
+        </div>
+        <div class="info-item">
+            <b>Hotline:</b> 
+            <span>087-8008158-9, 093-3190931-2</span>
+        </div>
+        <div class="info-item">
+            <b>Email:</b> 
+            <span>sale@khaoyaifarmvillage.com</span>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <h3>🌿 กิจกรรมแนะนำ</h3>
+        <p>สัมผัสประสบการณ์ใกล้ชิดสัตว์น้อยน่ารักในฟาร์มแกะและฟาร์มกระต่าย พร้อมกิจกรรม workshop เชิงเกษตรที่ออกแบบมาเพื่อการเรียนรู้และความสนุกสนานสำหรับทุกเพศทุกวัย</p>
+        <p style="font-style: italic; color: #666;">"ที่ท่องเที่ยวแนะนำเขาใหญ่ที่คุณไม่ควรพลาด"</p>
+    </div>
+</div>
+
+<div style="margin-top: 40px; text-align: center;">
+    <p>กดปุ่ม <b>"จองบัตร"</b> ด้านบนเพื่อวางแผนการเดินทางของคุณวันนี้!</p>
+</div>
+
+{% endblock %}
