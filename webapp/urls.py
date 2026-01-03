@@ -1,22 +1,19 @@
 from django.urls import path
 from .views import (
-    home, 
-    Farm_Products, 
-    farm_activities, 
-    seminar, 
-    workshop, 
-    packages, 
-    contact, 
-    booking
+    home, course, csr, reservation, location, picture, school_detail,
+    learning_center, one_day_trip, stem_camp, farm_tour # นำเข้า views ใหม่
 )
 
 urlpatterns = [
     path('', home, name='home'),
-    path('farm_products/', Farm_Products, name='farm_products'),
-    path('activities/', farm_activities, name='farm_activities'),
-    path('seminar/', seminar, name='seminar'),
-    path('workshop/', workshop, name='workshop'),
-    path('packages/', packages, name='packages'),
-    path('contact/', contact, name='contact'),
-    path('booking/', booking, name='booking'),
+    path('course/', course, name='course'),
+    path('learning-center/', learning_center, name='learning_center'),
+    path('one-day-trip/', one_day_trip, name='one_day_trip'),
+    path('stem-camp/', stem_camp, name='stem_camp'),
+    path('farm-tour/', farm_tour, name='farm_tour'),
+    path('csr/', csr, name='csr'),
+    path('reservation/', reservation, name='reservation'),
+    path('location/', location, name='location'),
+    path('picture/', picture, name='picture'),
+    path('school/<int:school_id>/', school_detail, name='school_detail'),
 ]

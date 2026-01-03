@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container animate__animated animate__fadeIn" style="padding: 60px 8%; max-width: 1200px; margin: auto;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="color: var(--dark-green); font-size: 2.5rem; font-weight: 700;">School One Day Trip</h1>
+        <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">เปิดโลกการเรียนรู้นอกห้องเรียนภายใน 1 วัน</p>
+        <div style="width: 80px; height: 4px; background: #1877F2; margin: 20px auto;"></div>
+    </div>
+
+    <div style="background: white; border-radius: 25px; padding: 40px; box-shadow: var(--nav-shadow);">
+        <h2 style="margin-bottom: 25px; color: #333;"><i class="fas fa-clock" style="color: #ff9800;"></i> ตารางกิจกรรมตัวอย่าง</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li style="padding: 15px 0; border-bottom: 1px solid #eee; display: flex; gap: 20px;">
+                <b style="min-width: 100px; color: var(--dark-green);">09:00 น.</b> <span>เดินทางถึงแคมป์ และปฐมนิเทศ</span>
+            </li>
+            <li style="padding: 15px 0; border-bottom: 1px solid #eee; display: flex; gap: 20px;">
+                <b style="min-width: 100px; color: var(--dark-green);">10:00 น.</b> <span>กิจกรรม Walk Rally ฐานการเรียนรู้ธรรมชาติ</span>
+            </li>
+            <li style="padding: 15px 0; border-bottom: 1px solid #eee; display: flex; gap: 20px;">
+                <b style="min-width: 100px; color: var(--dark-green);">12:00 น.</b> <span>รับประทานอาหารกลางวัน (เมนูออร์แกนิคจากฟาร์ม)</span>
+            </li>
+            <li style="padding: 15px 0; display: flex; gap: 20px;">
+                <b style="min-width: 100px; color: var(--dark-green);">13:30 น.</b> <span>กิจกรรม Workshop ทำปุ๋ยไส้เดือน หรือปลูกผักกระถาง</span>
+            </li>
+        </ul>
+    </div>
+
+     <!-- ปุ่มย้อนกลับ -->
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="{% url 'course' %}" style="
+                display: inline-block;
+                padding: 12px 32px;
+                background-color: #5fa04e;
+                color: #ffffff;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 30px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            "
+            onmouseover="this.style.backgroundColor='#4b8b3b'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.backgroundColor='#5fa04e'; this.style.transform='translateY(0)';">
+                ← กลับหน้าหลัก
+            </a>
+        </div>
+</div>
+{% endblock %}

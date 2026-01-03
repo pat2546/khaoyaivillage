@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container animate__animated animate__fadeIn" style="padding: 60px 8%; max-width: 1200px; margin: auto;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="color: var(--dark-green); font-size: 2.5rem; font-weight: 700;">Farm Tour for School</h1>
+        <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">สัมผัสวิถีเกษตรพอเพียงและการใช้ชีวิตร่วมกับธรรมชาติ</p>
+        <div style="width: 80px; height: 4px; background: #8BC34A; margin: 20px auto;"></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+        <div style="text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: var(--btn-shadow);">
+            <i class="fas fa-cow" style="font-size: 3rem; color: #795548; margin-bottom: 15px;"></i>
+            <h3>บ้านสัตว์เลี้ยง</h3>
+            <p>ให้อาหารน้องแกะ และเรียนรู้การเลี้ยงวัวนม</p>
+        </div>
+        <div style="text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: var(--btn-shadow);">
+            <i class="fas fa-egg" style="font-size: 3rem; color: #FFC107; margin-bottom: 15px;"></i>
+            <h3>เก็บไข่สดจากเล้า</h3>
+            <p>เรียนรู้วงจรชีวิตไก่ไข่แบบ Free Range</p>
+        </div>
+        <div style="text-align: center; background: white; padding: 25px; border-radius: 20px; box-shadow: var(--btn-shadow);">
+            <i class="fas fa-tractor" style="font-size: 3rem; color: #f44336; margin-bottom: 15px;"></i>
+            <h3>นั่งรถรางชมสวน</h3>
+            <p>ชมพรรณไม้นานาชนิดรอบพื้นที่กว่า 100 ไร่</p>
+        </div>
+
+         <!-- ปุ่มย้อนกลับ -->
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="{% url 'course' %}" style="
+                display: inline-block;
+                padding: 12px 32px;
+                background-color: #5fa04e;
+                color: #ffffff;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 30px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            "
+            onmouseover="this.style.backgroundColor='#4b8b3b'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.backgroundColor='#5fa04e'; this.style.transform='translateY(0)';">
+                ← กลับหน้าหลัก
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

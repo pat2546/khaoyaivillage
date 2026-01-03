@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container animate__animated animate__fadeIn" style="padding: 60px 8%; max-width: 1200px; margin: auto;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="color: var(--dark-green); font-size: 2.5rem; font-weight: 700;">STEM CAMP</h1>
+        <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">วิทยาศาสตร์ เทคโนโลยี วิศวกรรม และคณิตศาสตร์ ในสวนกว้าง</p>
+        <div style="width: 80px; height: 4px; background: #E91E63; margin: 20px auto;"></div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+        <div>
+            <h2 style="margin-bottom: 20px;">ทำไมต้องมา STEM ที่วังดุม?</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">
+                เราบูรณาการความรู้จากตำรามาสู่การลงมือทำจริง เช่น การคำนวณทิศทางลมเพื่อติดตั้งกังหัน, การศึกษาโครงสร้างของพืชผ่านกล้องจุลทรรศน์ และการประดิษฐ์หุ่นยนต์เกษตรเบื้องต้น
+            </p>
+            <ul style="margin-top: 20px; color: #444;">
+                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> เน้นทักษะการแก้ปัญหา (Problem Solving)</li>
+                <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> การทำงานเป็นทีม (Teamwork)</li>
+                <li><i class="fas fa-check-circle" style="color: var(--primary-green);"></i> ความคิดสร้างสรรค์ (Creativity)</li>
+            </ul>
+        </div>
+        <div style="background: #eee; height: 350px; border-radius: 30px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="{% static 'images/stem-activity.jpg' %}" alt="STEM" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </div>
+
+     <!-- ปุ่มย้อนกลับ -->
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="{% url 'course' %}" style="
+                display: inline-block;
+                padding: 12px 32px;
+                background-color: #5fa04e;
+                color: #ffffff;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 30px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            "
+            onmouseover="this.style.backgroundColor='#4b8b3b'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.backgroundColor='#5fa04e'; this.style.transform='translateY(0)';">
+                ← กลับหน้าหลัก
+            </a>
+        </div>
+</div>
+{% endblock %}

@@ -3,117 +3,270 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>KhaoYai Village</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhaoYai Farm village Learning</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
+        :root { 
+            --primary-green: #4CAF50; 
+            --dark-green: #2e7d32; 
+            --hover-green: #e8f5e9; 
+            --text-main: #2d3436;
+            --text-light: #636e72;
+            --nav-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            background-image: url("{% static 'images/A1.png' %}");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            min-height: 100vh;
             font-family: 'Sarabun', sans-serif;
-            margin: 0;
-            padding: 40px 0;
+            background-color: #f8fafb;
+            color: var(--text-main);
         }
 
-        .container {
-            background-color: rgba(255, 255, 255, 0.95);
-            max-width: 1200px; 
-            width: 90%;
-            margin: 0 auto; 
-            padding: 50px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
-            border-radius: 20px;
-            min-height: 80vh; 
+        .top-green-bar{
+            width:100%;
+            height:4px;
+            background:#7ED957;
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:1100;
         }
 
-        .nav-menu {
+        .header-container {
+            position: fixed;
+            top:4px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background:#ffffff;
             display: flex;
-            flex-wrap: wrap; 
-            justify-content: center;
-            gap: 15px; 
-            margin: 30px 0;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            box-shadow: var(--nav-shadow);
         }
 
-        .btn-nav {
-            background-color: #2c5e2c; 
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px; 
-            font-weight: bold;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: none;
-            cursor: pointer;
+        .main-logo { width:150px; }
+
+        .mid-section{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:10px;
         }
 
-        .btn-nav:hover {
-            background-color: #417d41; 
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        .nav-grid{
+            display:flex;
+            background:#fff;
+            border-radius:50px;
+            padding:5px;
+            border:1px solid rgba(0,0,0,0.05);
         }
 
-        .btn-booking {
-            background-color: #e67e22; 
-        }
-        .btn-booking:hover {
-            background-color: #f39c12;
+        .nav-link, .drop-btn{
+            padding:10px 22px;
+            font-size:15px;
+            font-weight:600;
+            border-radius:25px;
+            border:none;
+            background:transparent;
+            cursor:pointer;
+            text-decoration:none;
+            color:var(--text-light);
+            transition:var(--transition);
+            white-space:nowrap;
         }
 
-        h1 {
-            color: #2c5e2c;
-            text-align: center;
-            font-size: 2.5em;
-            margin-top: 30px;
-            margin-bottom: 30px;
+        .nav-link:hover, .nav-item:hover .drop-btn{
+            background:var(--hover-green);
+            color:var(--dark-green);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-                width: 95%;
-            }
-            .btn-nav {
-                width: 100%; 
-                text-align: center;
-            }
+        /* ===== active ===== */
+        .nav-link.active, .drop-btn.active{
+            background:var(--hover-green);
+            color:var(--dark-green);
+            font-weight:700;
+        }
+
+        .nav-item{ position:relative; }
+
+        .dropdown-content{
+            display:none;
+            position:absolute;
+            top:130%;
+            left:50%;
+            transform:translateX(-50%);
+            background:#fff;
+            min-width:250px;
+            border-radius:16px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.12);
+            padding:8px;
+        }
+
+        .dropdown-content a{
+            display:block;
+            padding:12px 18px;
+            text-decoration:none;
+            color:var(--text-light);
+            border-radius:10px;
+            transition:var(--transition);
+        }
+
+        .dropdown-content a:hover{
+            background:var(--hover-green);
+            color:var(--dark-green);
+            padding-left:22px;
+        }
+
+        .nav-item:hover .dropdown-content{
+            display:block;
+        }
+
+        .lang-bar{
+            display:flex;
+            gap:8px;
+        }
+
+        .lang-btn{
+            background:#f1f3f5;
+            border:none;
+            padding:6px 14px;
+            border-radius:20px;
+            cursor:pointer;
+            font-size:12px;
+            font-weight:700;
+            display:flex;
+            align-items:center;
+            gap:6px;
+        }
+
+        .flag-icon{
+            width:18px;
+            height:18px;
+            border-radius:50%;
+        }
+
+        .social-box{
+            display:flex;
+            gap:12px;
+        }
+
+        .social-btn{
+            width:44px;
+            height:44px;
+            border-radius:14px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#fff;
+            font-size:18px;
+            text-decoration:none;
+            transition:var(--transition);
+        }
+
+        .social-btn:hover{
+            transform:translateY(-4px);
+        }
+
+        .bg-fb{ background:#1877F2; }
+        .bg-line{ background:#06C755; }
+        .bg-yt{ background:#FF0000; }
+
+        @media(max-width:1100px){
+            .nav-grid{ display:none; }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <div style="text-align: center;">
-            <img src="{% static 'images/480753903_677060151333094_451378429623593590_n.jpg' %}"
-                 width="100%" 
-                 style="border-radius: 15px; max-height: 750px; object-fit: cover;"> 
-        </div>
+<div class="top-green-bar"></div>
 
-        <nav class="nav-menu">
-            <a href="{% url 'home' %}" class="btn-nav">หน้าแรก</a>
-            <a href="{% url 'farm_products' %}" class="btn-nav">สินค้าจากฟาร์ม</a>
-            <a href="{% url 'farm_activities' %}" class="btn-nav">กิจกรรมฟาร์ม</a>
-            <a href="{% url 'seminar' %}" class="btn-nav">สัมมนา</a>
-            <a href="{% url 'workshop' %}" class="btn-nav">workshop</a>
-            <a href="{% url 'packages' %}" class="btn-nav">แพ็คเกจ</a>
-            <a href="{% url 'contact' %}" class="btn-nav">ติดต่อ/แผนที่</a>
-            <a href="{% url 'booking' %}" class="btn-nav btn-booking">จองบัตร</a>
+<header class="header-container">
+    <a href="{% url 'home' %}">
+        <img src="{% static 'images/logo.jpg' %}" class="main-logo">
+    </a>
+
+    <div class="mid-section">
+        <nav class="nav-grid">
+            <a href="{% url 'home' %}" class="nav-link lang-text"
+               data-th="ยินดีต้อนรับ" data-en="Welcome">ยินดีต้อนรับ</a>
+
+             <a href="{% url 'course' %}" class="nav-link lang-text"
+               data-th="หลักสูตร" data-en="Welcome">หลักสูตร</a>
+
+            <a href="{% url 'csr' %}" class="nav-link lang-text"
+               data-th="CSR กิจกรรมเพื่อสังคม" data-en="CSR">CSR</a>
+
+            <a href="{% url 'reservation' %}" class="nav-link lang-text"
+               data-th="ตารางการจอง" data-en="Booking">ตารางการจอง</a>
+
+            <a href="{% url 'location' %}" class="nav-link lang-text"
+               data-th="สถานที่" data-en="Location">สถานที่</a>
+
+            <a href="{% url 'picture' %}" class="nav-link lang-text"
+               data-th="รูปภาพ" data-en="Picture">รูปภาพ</a>
         </nav>
 
-        <h1>KhaoYai Village Farm</h1>
-
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
-
-        {% block content %}
-        {% endblock %}
-
+        <div class="lang-bar">
+            <button class="lang-btn" onclick="setLang('th')">
+                <img src="https://flagcdn.com/w40/th.png" class="flag-icon"> TH
+            </button>
+            <button class="lang-btn" onclick="setLang('en')">
+                <img src="https://flagcdn.com/w40/gb.png" class="flag-icon"> EN
+            </button>
+        </div>
     </div>
+
+    <div class="social-box">
+        <a href="#" class="social-btn bg-fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn bg-line"><i class="fab fa-line"></i></a>
+        <a href="#" class="social-btn bg-yt"><i class="fab fa-youtube"></i></a>
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<script>
+function setLang(lang){
+    document.querySelectorAll('.lang-text').forEach(el=>{
+        const text = el.getAttribute('data-'+lang);
+        if(text){
+            const icon = el.querySelector('i');
+            el.innerText = text;
+            if(icon) el.appendChild(icon);
+        }
+    });
+    localStorage.setItem('lang',lang);
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+    setLang(localStorage.getItem('lang') || 'th');
+
+    document.body.style.paddingTop =
+        document.querySelector('.header-container').offsetHeight + 20 + 'px';
+
+    /* ===== เมนู active ตามหน้า ===== */
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-link, .drop-btn').forEach(link=>{
+        const href = link.getAttribute('href');
+        if(href && currentPath === href){
+            link.classList.add('active');
+        }
+    });
+});
+</script>
 
 </body>
 </html>

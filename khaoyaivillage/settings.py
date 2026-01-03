@@ -72,11 +72,14 @@ WSGI_APPLICATION = "khaoyaivillage.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'khaoyaivillage_db',
+        'USER': 'root',               # ชื่อผู้ใช้งาน MySQL (ปกติคือ root)
+        'PASSWORD': '',    # ใส่รหัสผ่าน ถ้าไม่มีให้ใส่เป็นค่าว่าง ''
+        'HOST': '127.0.0.1',          # หรือ 'localhost'
+        'PORT': '3306',               # Port มาตรฐานของ MySQL
     }
 }
 
@@ -114,10 +117,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "webapp" / "static",
+] # <--- ต้องมีเครื่องหมายปิดก้ามปูตรงนี้ครับ!
 
-]
+# --- ส่วนนี้ต้องอยู่นอกก้ามปู และชิดซ้าย (ไม่มี Space ข้างหน้า) ---
+
+# URL สำหรับเข้าถึงไฟล์ที่อัปโหลดผ่านหน้าเว็บ
+MEDIA_URL = '/media/'
+
+# Path จริงในเครื่องที่ใช้เก็บไฟล์รูปภาพ
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# ค่าเริ่มต้นสำหรับ Primary Key
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

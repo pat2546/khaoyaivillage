@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* ส่วนที่แก้ไขเพื่อให้เนื้อหาเลื่อนลงมา */
+    .school-list-container {
+        /* ปรับตัวเลขนี้ (180px) จนกว่าจะพ้นขอบ Header ของคุณพอดี */
+        margin-top: 180px; 
+        margin-bottom: 50px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        font-family: 'Sarabun', sans-serif;
+    }
+
+    /* หัวข้อรายชื่อ */
+    .school-title {
+        text-align: center;
+        font-size: 1.8rem; /* ปรับขนาดตัวหนังสือหัวข้อ */
+        color: #2e7d32;
+        margin-bottom: 25px;
+        font-weight: 700;
+    }
+
+    .school-item {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        transition: background 0.3s;
+    }
+
+    .school-item:hover {
+        background-color: #f9f9f9;
+    }
+
+    .school-item a {
+        text-decoration: none;
+        color: #2c3e50;
+        /* ปรับขนาดตัวหนังสือรายชื่อตรงนี้ */
+        font-size: 1.3rem; 
+        font-weight: 500;
+        display: block;
+    }
+
+    .school-item strong {
+        color: #4CAF50;
+        margin-right: 8px;
+    }
+
+    .empty-msg {
+        text-align: center;
+        color: #888;
+        margin-top: 30px;
+        font-size: 1.1rem;
+    }
+</style>
+
+<div class="school-list-container animate__animated animate__fadeIn">
+    <h2 class="school-title">รายชื่อโรงเรียน</h2>
+    
+    <div class="school-list">
+        {% for school in schools %}
+            <div class="school-item">
+                <a href="{% url 'school_detail' school.id %}">
+                    <strong>{{ forloop.counter }}.</strong> {{ school.name }}
+                </a>
+            </div>
+        {% empty %}
+            <p class="empty-msg">กำลังเตรียมข้อมูลรายชื่อโรงเรียน...</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

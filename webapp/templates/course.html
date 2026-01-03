@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="min-height: 70vh; padding: 120px 5% 50px; background-color: #fbf7e8;">
+    <div style="
+        max-width: 540px;
+        margin: 0 auto;;
+        background-color: #ffffff;
+        border-radius: 30px;
+        border: 3px solid #e5c04f;
+        padding: 45px 40px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    ">
+        <h2 style="
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #2f4f2f;
+            margin-bottom: 35px;
+        ">
+            หลักสูตร
+        </h2>
+
+        <div style="font-size: 1.2rem;">
+            
+            <a href="{% url 'learning_center' %}" style="
+                display: block;
+                padding: 14px 10px;
+                color: #2f4f2f;
+                text-decoration: none;
+                border-bottom: 1px solid #cfd8c3;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
+               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
+                • ศูนย์การเรียนรู้
+            </a>
+
+            <a href="{% url 'one_day_trip' %}" style="
+                display: block;
+                padding: 14px 10px;
+                color: #2f4f2f;
+                text-decoration: none;
+                border-bottom: 1px solid #cfd8c3;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
+               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
+                • สคูวันเดย์ทริปแพ็คเกจ
+            </a>
+
+            <a href="{% url 'stem_camp' %}" style="
+                display: block;
+                padding: 14px 10px;
+                color: #2f4f2f;
+                text-decoration: none;
+                border-bottom: 1px solid #cfd8c3;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
+               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
+                • สเต็มแคมป์
+            </a>
+
+            <a href="{% url 'farm_tour' %}" style="
+                display: block;
+                padding: 14px 10px;
+                color: #2f4f2f;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
+               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
+                • ฟาร์มทัวร์ฟอสคู
+            </a>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

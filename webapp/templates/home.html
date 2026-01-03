@@ -1,110 +1,136 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <style>
-    .welcome-section {
+    /* 1. Hero Section: ปรับให้รักษาสัดส่วนภาพ 16:9 เพื่อให้เห็นภาพครบ */
+    .hero-section { 
+        position: relative; 
+        width: 100%; 
+        /* กำหนดสัดส่วนภาพให้ยืดหยุ่นตามหน้าจอ */
+        aspect-ratio: 16 / 9; 
+        background: #000; 
+        overflow: hidden;
+        /* ลบ margin-top ติดลบออก เพื่อไม่ให้เนื้อหาสีขาวเลื่อนขึ้นมาบังรูป */
+        margin-top: 0; 
+    }
+
+    .hero-img { 
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        /* ใช้ cover เพื่อให้ภาพเต็มพื้นที่ และจัดให้อยู่กึ่งกลางเสมอ */
+        object-fit: cover; 
+        object-position: center;
+        opacity: 0; 
+        transition: opacity 1.5s ease-in-out; 
+    }
+    .hero-img.active { opacity: 1; }
+
+    /* ปุ่มลูกศร: ปรับขนาดให้เหมาะสมกับทุกอุปกรณ์ */
+    .arrow { 
+        position: absolute; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        background: rgba(0,0,0,0.3); 
+        color: #fff; 
+        border: none; 
+        width: 40px; 
+        height: 40px; 
+        border-radius: 50%; 
+        cursor: pointer; 
+        z-index: 10; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+    }
+    .a-left { left: 10px; }
+    .a-right { right: 10px; }
+
+    /* 2. Info Section: ส่วนเนื้อหาสีขาวที่จะเริ่มต่อจากท้ายรูปภาพพอดี */
+    .info-container {
+        padding: 60px 10%;
+        background-color: #ffffff; /* ปรับเป็นสีขาวตามต้นแบบ */
         text-align: center;
-        padding: 20px 0;
+        font-family: 'Sarabun', sans-serif;
     }
-    .welcome-section h2 {
-        color: #2c5e2c;
-        font-size: 2.2em;
-        margin-bottom: 10px;
+    .info-content { max-width: 900px; margin: 0 auto; }
+
+    /* 3. Responsive: ปรับแต่งพิเศษสำหรับมือถือ */
+    @media (max-width: 768px) {
+        .hero-section {
+            /* ในมือถือปรับสัดส่วนให้ภาพดูสูงขึ้น เพื่อให้เห็นรายละเอียดชัดเจน */
+            aspect-ratio: 4 / 3; 
+        }
+        .info-container {
+            padding: 40px 5%;
+        }
+        .main-title {
+            font-size: 1.5rem;
+        }
+        .st-text {
+            font-size: 0.9rem;
+        }
     }
-    .welcome-section p {
-        font-size: 1.2em;
-        color: #555;
-    }
-    
-    /* สไตล์ส่วนติดต่อสอบถาม (Contact) */
-    .contact-card {
-        background-color: #f9fbf9;
-        border-radius: 15px;
-        padding: 30px;
-        margin-top: 40px;
-        border-left: 8px solid #2c5e2c;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        text-align: left;
-    }
-    .contact-info {
-        flex: 1;
-        min-width: 300px;
-    }
-    .contact-info h3 {
-        color: #2c5e2c;
-        margin-top: 0;
-        font-size: 1.5em;
-        border-bottom: 2px solid #e0e0e0;
-        padding-bottom: 10px;
-    }
-    .info-item {
-        margin: 15px 0;
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    .info-item b {
-        color: #333;
-        min-width: 80px;
-    }
-    
-    .tags-container {
-        margin-top: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: center;
-    }
-    .tag {
-        background: #e8f5e8;
-        color: #2c5e2c;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 0.9em;
-        border: 1px solid #c8e6c9;
-    }
+
+    /* CSS ส่วนตกแต่งความเป็นทางการ */
+    .main-title { color: #2e7d32; font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
+    .title-underline { width: 50px; height: 3px; background: #8bc34a; margin: 0 auto 30px; }
+    .learning-zone { background: #f9fbfa; padding: 30px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 40px; }
+    .station-list { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .station-row { display: flex; width: 100%; max-width: 500px; background: white; border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; }
+    .st-number { background: #2e7d32; color: white; padding: 10px; width: 50px; font-weight: bold; }
+    .st-text { padding: 10px 15px; flex-grow: 1; text-align: left; }
+    .btn-corporate { display: inline-block; background: #aed581; color: #333; padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; }
 </style>
 
-<div class="welcome-section">
-    <h2>ยินดีต้อนรับสู่ KhaoYai Village Farm</h2>
-    <p>แหล่งเรียนรู้เชิงเกษตรและที่พักผ่อนหย่อนใจท่ามกลางธรรมชาติที่สมบูรณ์ที่สุดในเขาใหญ่</p>
-    
-    <div class="tags-container">
-        <span class="tag">#ฟาร์มแกะเขาใหญ่</span>
-        <span class="tag">#ฟาร์มกระต่าย</span>
-        <span class="tag">#ที่เที่ยวเขาใหญ่เปิดใหม่</span>
-        <span class="tag">#กิจกรรมครอบครัว</span>
-    </div>
-</div>
+<section class="hero-section">
+    <img src="{% static 'images/2.png' %}" class="hero-img active">
+    <img src="{% static 'images/3.png' %}" class="hero-img active">
+    <img src="{% static 'images/4.png' %}" class="hero-img active">
+    <button class="arrow a-left" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="arrow a-right" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+</section>
 
-<div class="contact-card">
-    <div class="contact-info">
-        <h3>📍 ข้อมูลการติดต่อ (Contact Us)</h3>
-        <div class="info-item">
-            <b>สถานที่:</b> 
-            <span>16 หมู่ 7 ถ.นิคมลำตะคอง ต.ขนงพระ <br> อ.ปากช่อง จ.นครราชสีมา 30130</span>
+<section class="info-container">
+    <div class="info-content">
+        <h2 class="main-title">เขาใหญ่ฟาร์มวิลเลจ (Khaoyai Farm Village)</h2>
+        <div class="title-underline"></div>
+        
+        <p style="font-size: 1.1rem; color: #555; margin-bottom: 40px;">
+            เปิดให้บริการตั้งแต่ปี พ.ศ. 2557 ด้วยความมุ่งมั่นในการพัฒนาแหล่งท่องเที่ยวเชิงเกษตรและการเรียนรู้ที่สมบูรณ์แบบ 
+            เราผสมผสานศาสตร์การเกษตรเข้ากับกิจกรรมสร้างสรรค์ เพื่อมอบประสบการณ์จริงให้แก่ผู้เข้าชมทุกช่วงวัย
+        </p>
+
+        <div class="learning-zone">
+            <h3 style="color: #2e7d32; margin-bottom: 20px;">ฐานการเรียนรู้เชิงเกษตร 5 สถานีหลัก</h3>
+            <div class="station-list">
+                <div class="station-row"><div class="st-number">01</div><div class="st-text">สถานีเกษตรก้าวหน้า</div></div>
+                <div class="station-row"><div class="st-number">02</div><div class="st-text">สถานีเกษตรปลอดภัย</div></div>
+                <div class="station-row"><div class="st-number">03</div><div class="st-text">สถานีสิ่งแวดล้อม & เกษตรอินเทรนด์</div></div>
+                <div class="station-row"><div class="st-number">04</div><div class="st-text">สถานีเห็ดเพื่อการเรียนรู้</div></div>
+                <div class="station-row"><div class="st-number">05</div><div class="st-text">สถานีดินเพื่อการเรียนรู้</div></div>
+            </div>
         </div>
-        <div class="info-item">
-            <b>Hotline:</b> 
-            <span>087-8008158-9, 093-3190931-2</span>
-        </div>
-        <div class="info-item">
-            <b>Email:</b> 
-            <span>sale@khaoyaifarmvillage.com</span>
-        </div>
+
+        <a href="#" class="btn-corporate">เกี่ยวกับเรา ☺</a>
     </div>
+</section>
 
-    <div class="contact-info">
-        <h3>🌿 กิจกรรมแนะนำ</h3>
-        <p>สัมผัสประสบการณ์ใกล้ชิดสัตว์น้อยน่ารักในฟาร์มแกะและฟาร์มกระต่าย พร้อมกิจกรรม workshop เชิงเกษตรที่ออกแบบมาเพื่อการเรียนรู้และความสนุกสนานสำหรับทุกเพศทุกวัย</p>
-        <p style="font-style: italic; color: #666;">"ที่ท่องเที่ยวแนะนำเขาใหญ่ที่คุณไม่ควรพลาด"</p>
-    </div>
-</div>
+<script>
+    let idx = 0;
+    const imgs = document.querySelectorAll('.hero-img');
 
-<div style="margin-top: 40px; text-align: center;">
-    <p>กดปุ่ม <b>"จองบัตร"</b> ด้านบนเพื่อวางแผนการเดินทางของคุณวันนี้!</p>
-</div>
+    function showImg(n) {
+        if (imgs.length === 0) return;
+        imgs.forEach(i => i.classList.remove('active'));
+        idx = (n + imgs.length) % imgs.length;
+        imgs[idx].classList.add('active');
+    }
 
+    function moveSlide(n) { showImg(idx + n); }
+    if (imgs.length > 1) {
+        setInterval(() => moveSlide(1), 5000);
+    }
+</script>
 {% endblock %}
