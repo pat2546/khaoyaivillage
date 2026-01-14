@@ -2,50 +2,352 @@
 {% load static %}
 
 {% block content %}
-<div class="container animate__animated animate__fadeIn" style="padding: 60px 8%; max-width: 1200px; margin: auto;">
+<style>
+    .birding-container {
+        font-family: 'Sarabun', sans-serif;
+        background-color: #f1f3e3;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .hero-section {
+        position: relative;
+        width: 100%;
+        line-height: 0;
+    }
+    
+    .hero-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: brightness(0.7);
+    }
+
+    .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 90%;
+    }
+
+    .content-wrapper {
+        max-width: 1100px;
+        width: 90%;
+        margin: 40px auto 80px;
+        padding: 0;
+    }
+
+    /* ตกแต่งส่วน Grid รูปภาพ */
+    .gallery-grid {
+        margin: 40px 0 60px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+    }
+
+    .gallery-item {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border-radius: 25px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* เส้นคั่นระหว่างหัวข้อ */
+    .section-divider {
+        height: 2px;
+        background-color: rgba(75, 116, 71, 0.1);
+        margin: 80px 0;
+        border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+        .hero-text h1 { font-size: 2.5rem !important; }
+        .content-wrapper h1 { font-size: 2.5rem !important; }
+        .content-wrapper h2 { font-size: 1.5rem !important; }
+        .content-wrapper p { font-size: 1.1rem !important; text-indent: 0 !important; text-align: center; }
+        
+        .footer-action {
+            flex-direction: column;
+            text-align: center;
+            gap: 25px !important;
+        }
+    }
+</style>
+
+<div class="birding-container">
+    <div class="hero-section">
+        <img src="{% static 'images/web23.jpg' %}" class="hero-img" alt="Hero Banner">
+        <div class="hero-text">
+            <h1 style="font-size: 4.5rem; font-weight: 900; color: #ffffff; margin: 0; font-family: 'Arial Black', sans-serif; text-transform: uppercase; line-height: 1.1; text-shadow: 2px 2px 15px rgba(0,0,0,0.6);">
+                Activity<br>Center
+            </h1>
+            <p style="font-size: 1.8rem; color: #ffffff; margin-top: 15px; font-weight: 500; text-shadow: 1px 1px 8px rgba(0,0,0,0.6);">
+                เรียนรู้โลกกว้างผ่านเลนส์ สัมผัสวิถีชีวิตธรรมชาติ
+            </p>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+    
+    <div class="activity-section">
     <div style="text-align: center; margin-bottom: 50px;">
-        <h1 style="color: var(--dark-green); font-size: 2.5rem; font-weight: 700;">ศูนย์การเรียนรู้</h1>
-        <p style="color: #666; font-size: 1.1rem; margin-top: 10px;">แหล่งเรียนรู้พลังงานทดแทนและนวัตกรรมทางการเกษตร</p>
-        <div style="width: 80px; height: 4px; background: var(--primary-green); margin: 20px auto;"></div>
+        <h1 style="font-size: 4rem; font-weight: 900; color: #333; margin: 0; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">Sheep Safari & Giant Tree</h1>
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: #4b7447; margin-top: 10px;">สถานีที่ 1 : ฟาร์มแกะ</h2>
+        <div style="width: 60px; height: 5px; background-color: #4b7447; margin: 20px auto 0; border-radius: 10px;"></div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-        <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
-            <i class="fas fa-solar-panel" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 20px;"></i>
-            <h3 style="margin-bottom: 15px;">ฐานการเรียนรู้พลังงาน</h3>
-            <p style="color: #555; line-height: 1.6;">เรียนรู้เรื่องโซล่าเซลล์ พลังงานลม และก๊าซชีวภาพที่สามารถนำมาใช้จริงในครัวเรือนและฟาร์ม</p>
+    <div style="color: #444; line-height: 1.9; max-width: 950px; margin: 0 auto;">
+        <p style="font-size: 1.35rem; margin-bottom: 25px; text-indent: 50px; text-align: justify;">
+            <strong>ปลดปล่อยพลังแห่งการเรียนรู้</strong> บนสนามหญ้ากว้างสุดสายตาที่ออกแบบมาเพื่อให้เด็กๆ ได้สัมผัสกับธรรมชาติอย่างใกล้ชิด เพราะเราเชื่อว่า "เหล่าน้องสัตว์และพื้นที่สีเขียว" คือครูที่ดีที่สุดในการส่งเสริมพัฒนาการผ่านประสาทสัมผัสทั้ง 5 กระตุ้นความอยากรู้อยากเห็นและการแสดงออกอย่างอิสระท่ามกลางสารแห่งความสุข (Endorphins) ที่เกิดขึ้นจากการลงมือทำจริง
+        </p>
+        <p style="font-size: 1.35rem; margin-bottom: 40px; text-indent: 50px; text-align: justify;">
+            ไฮไลท์สำคัญของสถานีนี้คือการเรียนรู้ผ่าน <strong>"ต้นงิ้วป่าร้อยปี"</strong> หนึ่งในพันธุ์ไม้ทรงคุณค่าภายใต้โครงการอนุรักษ์พันธุกรรมพืชอันเนื่องมาจากพระราชดำริฯ ที่ยืนต้นเด่นเป็นตระหง่าน เพื่อปลูกฝังจิตสำนึกในการอนุรักษ์ทรัพยากรธรรมชาติและส่งต่อแรงบันดาลใจแห่งการรักษ์โลกสู่หัวใจดวงน้อยอย่างยั่งยืน
+        </p>
+            
+           <div style="padding: 0; margin: 0 auto 50px auto; max-width: 850px;">
+    <h3 style="font-size: 2.5rem; color: #333; margin-top: 0; margin-bottom: 15px; font-weight: 900; font-family: 'Arial Black', sans-serif; letter-spacing: -1px;">Learning Goals</h3>
+    
+    <ul style="font-size: 1.3rem; list-style: none; padding-left: 0; margin: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ส่งเสริมพัฒนาการของเด็ก:</span> &nbsp;เรียนรู้ผ่านประสาทสัมผัสทั้ง 5
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ออกกำลังกายและเคลื่อนไหว:</span> &nbsp;ปล่อยพลังบนสนามหญ้ากว้าง
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">เรียนรู้วิถีชีวิตสัตว์:</span> &nbsp;สัมผัสน้องแกะ กระต่าย และเต่า
+        </li>
+        <li style="padding: 10px 0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">การอนุรักษ์ธรรมชาติ:</span> &nbsp;เรียนรู้ผ่านต้นงิ้วป่าร้อยปี (อพ.สธ.)
+        </li>
+    </ul>
+</div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="{% static 'images/sheep1.JPG' %}"  ></div>
+            <div class="gallery-item"><img src="{% static 'images/sheep2.JPEG' %}" ></div>
+            <div class="gallery-item"><img src="{% static 'images/sheep3.JPEG' %}" ></div>
+            <div class="gallery-item"><img src="{% static 'images/sheep4.JPEG' %}" ></div>
         </div>
-        <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;">
-            <i class="fas fa-seedling" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 20px;"></i>
-            <h3 style="margin-bottom: 15px;">เกษตรอัจฉริยะ (Smart Farm)</h3>
-            <p style="color: #555; line-height: 1.6;">การใช้เซนเซอร์และระบบอัตโนมัติในการบริหารจัดการน้ำและปุ๋ยเพื่อเพิ่มผลผลิตอย่างยั่งยืน</p>
+    </div>
+</div>
+
+        <div class="section-divider"></div>
+
+       <div class="activity-section">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 4rem; font-weight: 900; color: #333; margin: 0; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">Mushroom Kingdom</h1>
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: #8d5d3e; margin-top: 10px;">สถานีที่ 2 : เห็ด </h2>
+        <div style="width: 60px; height: 5px; background-color: #8d5d3e; margin: 20px auto 0; border-radius: 10px;"></div>
+    </div>
+
+    <div style="color: #444; line-height: 1.9; max-width: 950px; margin: 0 auto;">
+        <p style="font-size: 1.35rem; margin-bottom: 25px; text-indent: 50px; text-align: justify;">
+            <strong>เจาะลึกความลับของสิ่งมีชีวิตที่น่าค้นคว้า</strong> พบกับความรู้ครบวงจรตั้งแต่ระดับงานอดิเรกในครัวเรือนไปจนถึงการทำเป็นอาชีพ ถ่ายทอดทุกขั้นตอนตั้งแต่การคัดสรรสูตรอาหารทำก้อนเห็ด การใช้เทคโนโลยีเครื่องจักรที่ทันสมัย ไปจนถึงเทคนิคการเปิดดอกและการดูแลรักษา พร้อมเผยเคล็ดลับการบริหารจัดการฟาร์มและต้นทุนเพื่อสร้างรายได้อย่างยั่งยืน
+        </p>
+        <p style="font-size: 1.35rem; margin-bottom: 40px; text-indent: 50px; text-align: justify;">
+            สำหรับน้องๆ วัยเรียน เราจะพาไปผจญภัยใน <strong>อาณาจักรฟังใจ (Kingdom Fungi)</strong> เพื่อทำความเข้าใจจุดกำเนิดและวงจรชีวิตอันน่าทึ่งของดอกเห็ด ปิดท้ายด้วยกิจกรรมไฮไลท์ "เวิร์กชอปทำก้อนเห็ด" ที่เปิดโอกาสให้เด็กๆ ได้ลงมือทำด้วยตนเอง พร้อมรับก้อนเห็ดกลับไปดูแลและรอชมผลผลิตที่บ้านด้วยความภาคภูมิใจ
+        </p>
+
+        <div style="padding: 0; margin: 0 auto 50px auto; max-width: 850px;">
+    <h3 style="font-size: 2.5rem; color: #333; margin-top: 0; margin-bottom: 15px; font-weight: 900; font-family: 'Arial Black', sans-serif; letter-spacing: -1px;">Learning Goals</h3>
+    
+    <ul style="font-size: 1.3rem; list-style: none; padding-left: 0; margin: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #8d5d3e; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ชีววิทยาเบื้องต้น:</span> &nbsp;เรียนรู้ส่วนประกอบของดอกเห็ด
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #8d5d3e; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">โภชนาการและจำแนกสายพันธุ์:</span> &nbsp;ประโยชน์ของเห็ด, เห็ดทานได้ และเห็ดพิษ
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #8d5d3e; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ส่วนผสมและวัสดุอุปกรณ์:</span> &nbsp;หัวใจสำคัญของการเตรียมสูตรอาหารทำก้อนเห็ด
+        </li>
+        <li style="padding: 10px 0; display: flex; align-items: center;">
+            <div style="background-color: #8d5d3e; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ทักษะการเพาะเห็ด:</span> &nbsp;ขั้นตอนการทำก้อน และเทคนิคการดูแลรักษาให้เปิดดอกสวย
+        </li>
+    </ul>
+</div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="{% static 'images/mushroom1.JPEG' %}" ></div> 
+        <div class="gallery-item"><img src="{% static 'images/mushroom2.JPEG' %}" ></div> 
+        <div class="gallery-item"><img src="{% static 'images/mushroom3.JPEG' %}" ></div> 
+        <div class="gallery-item"><img src="{% static 'images/mushroom4.JPEG' %}" ></div> 
+    </div>
+</div>
+
+        <div class="section-divider" style="height: 2px; background-color: rgba(75, 116, 71, 0.1); margin: 80px 0; border-radius: 2px;"></div>
+
+        <div class="activity-section">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 4rem; font-weight: 900; color: #333; margin: 0; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">Coffee Discovery</h1>
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: #6f4e37; margin-top: 10px;">สถานีที่ 3 : กาแฟ ศาสตร์แห่งกลิ่นและการเรียนรู้</h2>
+        <div style="width: 60px; height: 5px; background-color: #6f4e37; margin: 20px auto 0; border-radius: 10px;"></div>
+    </div>
+
+    <div style="color: #444; line-height: 1.9; max-width: 950px; margin: 0 auto;">
+        <p style="font-size: 1.35rem; margin-bottom: 25px; text-indent: 50px; text-align: justify;">
+            <strong>สัมผัสโลกของกาแฟที่มากกว่าแค่เครื่องดื่ม</strong> กาแฟเป็นพืชที่หลายคนอาจไม่เคยเห็นต้นจริง แต่เป็นสิ่งที่อยู่ใกล้ตัวเราในทุกวัน เด็กๆ จะได้เปิดโลกทัศน์และค้นหาศาสตร์ความลับที่น่าสนใจผ่านประสาทสัมผัสการดมกลิ่น ฝึกจำแนกเอกลักษณ์ของกลิ่นที่หลากหลาย และสร้างสรรค์จินตนาการผ่านงานศิลปะจากวัสดุธรรมชาติอย่าง "ใบกาแฟ" เพื่อสร้างความผูกพันระหว่างมนุษย์และพืชพรรณธรรมชาติอย่างลึกซึ้ง
+        </p>
+
+        <div style="padding: 0; margin: 0 auto 50px auto; max-width: 850px;">
+    <h3 style="font-size: 2.5rem; color: #333; margin-top: 0; margin-bottom: 15px; font-weight: 900; font-family: 'Arial Black', sans-serif; letter-spacing: -1px;">Learning Goals</h3>
+    
+    <ul style="font-size: 1.3rem; list-style: none; padding-left: 0; margin: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #6f4e37; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">พฤกษศาสตร์กาแฟ:</span> &nbsp;เรียนรู้สายพันธุ์กาแฟและลักษณะทางกายภาพ
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #6f4e37; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ศาสตร์แห่งกลิ่น:</span> &nbsp;ฝึกทักษะการสังเกตและเรียนรู้เอกลักษณ์กลิ่นเฉพาะตัวของกาแฟ
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #6f4e37; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">โภชนาการที่เหมาะสม:</span> &nbsp;เรียนรู้ประโยชน์ โทษ และปริมาณน้ำตาลในเครื่องดื่ม
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #6f4e37; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">เทคโนโลยีอาหาร:</span> &nbsp;การวัดความหวานด้วยเครื่อง Brix Refractometer
+        </li>
+        <li style="padding: 10px 0; display: flex; align-items: center;">
+            <div style="background-color: #6f4e37; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">แรงบันดาลใจแห่งอาชีพ:</span> &nbsp;เสริมสร้างทักษะเพื่อต่อยอดสู่บาริสต้าตัวน้อยในอนาคต
+        </li>
+    </ul>
+</div>
+
+            <div class="gallery-grid" style="margin: 40px 0 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px;">
+                <div class="gallery-item" style="aspect-ratio: 4/3; overflow: hidden; border-radius: 25px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);"><img src="{% static 'images/star1.JPEG' %}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="gallery-item" style="aspect-ratio: 4/3; overflow: hidden; border-radius: 25px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);"><img src="{% static 'images/star2.JPEG' %}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="gallery-item" style="aspect-ratio: 4/3; overflow: hidden; border-radius: 25px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);"><img src="{% static 'images/star3.JPEG' %}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="gallery-item" style="aspect-ratio: 4/3; overflow: hidden; border-radius: 25px; box-shadow: 0 15px 30px rgba(0,0,0,0.1);"><img src="{% static 'images/star4.JPEG' %}" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            </div>
         </div>
+
+        <div class="activity-section">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 4rem; font-weight: 900; color: #333; margin: 0; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">Eco-Warrior World</h1>
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: #4b7447; margin-top: 10px;">สถานีที่ 4 : มหัศจรรย์ชีวิตใต้ดินและผู้พิชิตขยะอินทรีย์</h2>
+        <div style="width: 60px; height: 5px; background-color: #4b7447; margin: 20px auto 0; border-radius: 10px;"></div>
     </div>
 
-    <div style="margin-top: 50px; text-align: center;">
-        <a href="{% url 'reservation' %}" class="social-btn bg-line" style="width: auto; height: auto; padding: 12px 30px; border-radius: 30px; display: inline-flex; font-size: 16px;">
-            <i class="fab fa-line" style="margin-right: 10px;"></i> จองเข้าชมเป็นหมู่คณะ
-        </a>
+    <div style="color: #444; line-height: 1.9; max-width: 950px; margin: 0 auto;">
+        <p style="font-size: 1.35rem; margin-bottom: 25px; text-indent: 50px; text-align: justify;">
+            <strong>สร้างความตระหนักรู้จากสิ่งใกล้ตัว</strong> ผ่านการจัดการขยะในครัวเรือนอย่างถูกวิธีด้วยวิถีธรรมชาติ พาเด็กๆ ดำดิ่งสู่โลกใต้ดินเพื่อทำความรู้จักกับ "ไส้เดือน" และ "หนอนแมลงวันลาย" อัศวินจิ๋วผู้ช่วยกำจัดขยะอินทรีย์ เปลี่ยนความสงสัยให้เป็นความตื่นเต้นผ่านการสัมผัสตัวเป็นๆ กระตุ้นการเรียนรู้ด้านชีววิทยาและระบบนิเวศ เพื่อให้เด็กๆ เข้าใจถึงความสำคัญของทุกชีวิตเล็กๆ ที่ช่วยขับเคลื่อนโลกของเราให้ยั่งยืน
+        </p>
+
+        <div style="padding: 0; margin: 0 auto 50px auto; max-width: 850px;">
+    <h3 style="font-size: 2.5rem; color: #333; margin-top: 0; margin-bottom: 15px; font-weight: 900; font-family: 'Arial Black', sans-serif; letter-spacing: -1px;">Learning Goals</h3>
+    
+    <ul style="font-size: 1.3rem; list-style: none; padding-left: 0; margin: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">ชีววิทยาเบื้องต้น:</span> &nbsp;เรียนรู้โครงสร้างและธรรมชาติของไส้เดือนและหนอนแมลงวันลาย
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">การจัดการขยะ:</span> &nbsp;เทคนิคการเตรียมที่อยู่และการเลี้ยงดูเพื่อกำจัดขยะอินทรีย์
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">เกษตรหมุนเวียน:</span> &nbsp;เรียนรู้ประโยชน์มหาศาลจากมูลไส้เดือนและหนอนแมลงวันลาย
+        </li>
+        <li style="padding: 10px 0; display: flex; align-items: center;">
+            <div style="background-color: #4b7447; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">จิตสำนึกสิ่งแวดล้อม:</span> &nbsp;เห็นคุณค่าของชีวิตใต้ดินและแรงกระตุ้นในการดูแลโลก
+        </li>
+    </ul>
+</div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="{% static 'images/earthworm1.jpg' %}"></div> 
+        <div class="gallery-item"><img src="{% static 'images/earthworm2.jpg' %}"></div> 
+        <div class="gallery-item"><img src="{% static 'images/maggot1.jpg' %}"></div> 
+        <div class="gallery-item"><img src="{% static 'images/eco_activity1.jpg' %}"></div> 
+    </div>
+</div>
+
+
+<div class="activity-section">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <h1 style="font-size: 4rem; font-weight: 900; color: #333; margin: 0; font-family: 'Arial Black', sans-serif; text-transform: uppercase;">Smart Agriculture</h1>
+        <h2 style="font-size: 2.2rem; font-weight: 700; color: #2e7d32; margin-top: 10px;">สถานีที่ 5 : เกษตรก้าวหน้าและนวัตกรรมพืชสวน</h2>
+        <div style="width: 60px; height: 5px; background-color: #2e7d32; margin: 20px auto 0; border-radius: 10px;"></div>
     </div>
 
-     <!-- ปุ่มย้อนกลับ -->
-        <div style="margin-top: 40px; text-align: center;">
+    <div style="color: #444; line-height: 1.9; max-width: 950px; margin: 0 auto;">
+        <p style="font-size: 1.35rem; margin-bottom: 25px; text-indent: 50px; text-align: justify;">
+            <strong>มัดรวมนวัตกรรมการเพาะปลูกยุคใหม่</strong> สถานีแห่งการเรียนรู้ที่รวบรวมเทคโนโลยีการเกษตรไว้อย่างครบครัน ตั้งแต่การปลูกผักไฮโดรโปนิกส์ที่ใช้พื้นที่อย่างมีประสิทธิภาพ ไปจนถึงการปลูกผักอินทรีย์บนโต๊ะที่ง่ายต่อการจัดการ นอกจากนี้เด็กๆ ยังจะได้ตื่นตาตื่นใจกับ "พิพิธภัณฑ์กล้วย" และห้องปฏิบัติการเพาะเลี้ยงเนื้อเยื่อ (Tissue Culture) ที่จะเปลี่ยนภาพลักษณ์การเกษตรแบบเดิมให้กลายเป็นห้องเรียนวิทยาศาสตร์ที่มีชีวิต
+        </p>
+
+        <div style="padding: 0; margin: 0 auto 50px auto; max-width: 850px;">
+    <h3 style="font-size: 2.5rem; color: #333; margin-top: 0; margin-bottom: 15px; font-weight: 900; font-family: 'Arial Black', sans-serif; letter-spacing: -1px;">Learning Goals</h3>
+    
+    <ul style="font-size: 1.3rem; list-style: none; padding-left: 0; margin: 0;">
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #2e7d32; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">พื้นฐานปัจจัยการเติบโต:</span> &nbsp;ทำความเข้าใจว่าพืชโตได้อย่างไร และสารอาหารที่พืชต้องการ
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #2e7d32; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">นวัตกรรม Tissue Culture:</span> &nbsp;เรียนรู้วิธีปลูกพืชแบบนักวิทยาศาสตร์ผ่านการเพาะเลี้ยงเนื้อเยื่อ
+        </li>
+        <li style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+            <div style="background-color: #2e7d32; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">วิทยาศาสตร์ของดินและน้ำ:</span> &nbsp;การหาประจุไฟฟ้าในดิน และเทคนิคการปลูกผักไฮโดรโปนิกส์
+        </li>
+        <li style="padding: 10px 0; display: flex; align-items: center;">
+            <div style="background-color: #2e7d32; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0; font-size: 0.8rem;">✔</div>
+            <span style="font-weight: 600; color: #333;">โลกของกล้วย:</span> &nbsp;สำรวจสายพันธุ์ที่หลากหลาย ประโยชน์มหาศาล และการสังเกตความแตกต่าง
+        </li>
+    </ul>
+</div>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="{% static 'images/hydroponics1.jpg' %}"></div> 
+        <div class="gallery-item"><img src="{% static 'images/tissue_culture1.jpg' %}"></div> 
+        <div class="gallery-item"><img src="{% static 'images/banana_museum1.jpg' %}"></div> 
+        <div class="gallery-item"><img src="{% static 'images/organic_table1.jpg' %}"></div> 
+    </div>
+</div>
+
+        <div class="footer-action" style="margin-top: 50px; padding-top: 35px; border-top: 2px solid rgba(75, 116, 71, 0.1); display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 1.1rem; color: #666; font-style: italic;">
+                <p style="margin: 0;"></p>
+            </div>
+
             <a href="{% url 'course' %}" style="
-                display: inline-block;
-                padding: 12px 32px;
-                background-color: #5fa04e;
+                display: inline-flex;
+                align-items: center;
+                background-color: #4b7447; 
                 color: #ffffff;
-                font-size: 1.1rem;
-                font-weight: 600;
-                border-radius: 30px;
+                padding: 15px 40px;
+                border-radius: 40px;
                 text-decoration: none;
-                transition: all 0.3s ease;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            "
-            onmouseover="this.style.backgroundColor='#4b8b3b'; this.style.transform='translateY(-2px)';"
-            onmouseout="this.style.backgroundColor='#5fa04e'; this.style.transform='translateY(0)';">
-                ← กลับหน้าหลัก
+                font-weight: 700;
+                font-size: 1.2rem;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(75, 116, 71, 0.2);
+            ">
+                กลับหน้าหลักหลักสูตร
             </a>
         </div>
+    </div>
 </div>
 {% endblock %}

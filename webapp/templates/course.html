@@ -2,76 +2,50 @@
 {% load static %}
 
 {% block content %}
-<div style="min-height: 70vh; padding: 120px 5% 50px; background-color: #fbf7e8;">
-    <div style="
-        max-width: 540px;
-        margin: 0 auto;;
-        background-color: #ffffff;
-        border-radius: 30px;
-        border: 3px solid #e5c04f;
-        padding: 45px 40px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    ">
-        <h2 style="
-            font-size: 2.6rem;
-            font-weight: 700;
-            color: #2f4f2f;
-            margin-bottom: 35px;
-        ">
-            หลักสูตร
-        </h2>
-
-        <div style="font-size: 1.2rem;">
-            
-            <a href="{% url 'learning_center' %}" style="
-                display: block;
-                padding: 14px 10px;
-                color: #2f4f2f;
-                text-decoration: none;
-                border-bottom: 1px solid #cfd8c3;
-                transition: all 0.3s ease;
-            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
-               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
-                • ศูนย์การเรียนรู้
-            </a>
-
-            <a href="{% url 'one_day_trip' %}" style="
-                display: block;
-                padding: 14px 10px;
-                color: #2f4f2f;
-                text-decoration: none;
-                border-bottom: 1px solid #cfd8c3;
-                transition: all 0.3s ease;
-            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
-               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
-                • สคูวันเดย์ทริปแพ็คเกจ
-            </a>
-
-            <a href="{% url 'stem_camp' %}" style="
-                display: block;
-                padding: 14px 10px;
-                color: #2f4f2f;
-                text-decoration: none;
-                border-bottom: 1px solid #cfd8c3;
-                transition: all 0.3s ease;
-            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
-               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
-                • สเต็มแคมป์
-            </a>
-
-            <a href="{% url 'farm_tour' %}" style="
-                display: block;
-                padding: 14px 10px;
-                color: #2f4f2f;
-                text-decoration: none;
-                transition: all 0.3s ease;
-            " onmouseover="this.style.paddingLeft='20px'; this.style.color='#5fa04e';"
-               onmouseout="this.style.paddingLeft='10px'; this.style.color='#2f4f2f';">
-                • ฟาร์มทัวร์ฟอสคู
-            </a>
-
+<div style="min-height: 70vh; padding: 120px 5% 80px; background-color: #f0f7f0; font-family: 'Sarabun', sans-serif; color: #333;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        
+        <div style="margin-bottom: 50px;">
+            <h1 style="font-size: 2.5rem; font-weight: 700; color: #1a301a; margin-bottom: 25px;">หลักสูตรการเรียนรู้</h1>
+            <p style="font-size: 1.15rem; line-height: 1.8; color: #444; text-align: justify;">
+                การเรียนรู้นอกห้องเรียนเป็นองค์ประกอบสำคัญต่อการพัฒนาทักษะในอนาคต โดยมุ่งเน้นการสร้างเสริมจินตนาการผ่านการสัมผัสประสบการณ์ตรงจากธรรมชาติ 
+                ซึ่งจะช่วยขยายขอบเขตการเรียนรู้ให้กว้างขวางยิ่งขึ้น ผ่านกระบวนการจัดการเรียนรู้รูปแบบ Active Learning และการบูรณาการตามแนวทาง STEM Education 
+                เพื่อให้ผู้เรียนได้ลงมือปฏิบัติจริงในสถานีการเรียนรู้ต่างๆ 
+            </p>
         </div>
 
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+            
+            <div style="
+                flex: 1; 
+                min-width: 300px; 
+                border: 1px solid #c9c9c9; 
+                border-top: 5px solid #1a301a; /* เพิ่มเส้นหนาด้านบนเพื่อความภูมิฐาน */
+                padding: 35px; 
+                border-radius: 8px; 
+                background-color: #ffffff; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* เพิ่มเงาให้นุ่มนวล */
+            ">
+                <h3 style="font-size: 1.4rem; font-weight: 700; color: #1a301a; margin-bottom: 20px; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                    PROGRAMS
+                </h3>
+                <div style="font-size: 1.1rem;">
+                    <a href="{% url 'learning_center' %}" style="display: block; padding: 15px 0; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; transition: all 0.3s ease;" onmouseover="this.style.color='#1a301a'; this.style.paddingLeft='10px'; this.style.backgroundColor='#f9f9f9';" onmouseout="this.style.color='#333'; this.style.paddingLeft='0'; this.style.backgroundColor='transparent';">
+                        • ศูนย์การเรียนรู้
+                    </a>
+                    <a href="{% url 'one_day_trip' %}" style="display: block; padding: 15px 0; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; transition: all 0.3s ease;" onmouseover="this.style.color='#1a301a'; this.style.paddingLeft='10px'; this.style.backgroundColor='#f9f9f9';" onmouseout="this.style.color='#333'; this.style.paddingLeft='0'; this.style.backgroundColor='transparent';">
+                        • สคูวันเดย์ทริปแพ็คเกจ
+                    </a>
+                    <a href="{% url 'stem_camp' %}" style="display: block; padding: 15px 0; color: #333; text-decoration: none; border-bottom: 1px solid #f0f0f0; transition: all 0.3s ease;" onmouseover="this.style.color='#1a301a'; this.style.paddingLeft='10px'; this.style.backgroundColor='#f9f9f9';" onmouseout="this.style.color='#333'; this.style.paddingLeft='0'; this.style.backgroundColor='transparent';">
+                        • สเต็มแคมป์
+                    </a>
+                    <a href="{% url 'farm_tour' %}" style="display: block; padding: 15px 0; color: #333; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.color='#1a301a'; this.style.paddingLeft='10px'; this.style.backgroundColor='#f9f9f9';" onmouseout="this.style.color='#333'; this.style.paddingLeft='0'; this.style.backgroundColor='transparent';">
+                        • ฟาร์มทัวร์ฟอสคู
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,9 +1,63 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div style="text-align: center;">
-    <h2>ตารางการจอง</h2>
-    <p>ที่ตั้ง: เขาใหญ่ จ.นครราชสีมา</p>
-    <p>โทร: 0XX-XXX-XXXX</p>
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+
+<div class="calendar-container" style="padding: 20px; background: white; border-radius: 10px; margin: 80px 20px 20px 20px;">
+    <div id='calendar'></div>
+    
+    <div class="calendar-legend" style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; font-size: 14px; flex-wrap: wrap;">
+        <span style="display: flex; align-items: center; gap: 5px;"><i style="width: 15px; height: 15px; background: #e040fb; display: inline-block;"></i> ค่ายครอบครัว</span>
+        <span style="display: flex; align-items: center; gap: 5px;"><i style="width: 15px; height: 15px; background: #8bc34a; display: inline-block;"></i> ค่ายสะเต็ม</span>
+        <span style="display: flex; align-items: center; gap: 5px;"><i style="width: 15px; height: 15px; background: #03a9f4; display: inline-block;"></i> คณะท่องเที่ยว</span>
+        <span style="display: flex; align-items: center; gap: 5px;"><i style="width: 15px; height: 15px; background: #ff9800; display: inline-block;"></i> กิจกรรม</span>
+        <span style="display: flex; align-items: center; gap: 5px;"><i style="width: 15px; height: 15px; background: #ff0000; display: inline-block;"></i> รอยืนยัน</span>
     </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    
+    // ดึงข้อมูล JSON จาก Django Views และใช้ |safe เพื่อป้องกันการเปลี่ยนรหัสตัวอักษร
+    var bookingData = {{ events_json|safe }};
+    
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'th', // ตั้งเป็นภาษาไทย
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek'
+      },
+      // ใช้ข้อมูลจากฐานข้อมูลมาแสดงผล
+      events: bookingData,
+      
+      // ปรับแต่งการแสดงผลแถบสีให้ดูสวยงาม
+      eventDisplay: 'block',
+      displayEventTime: false, // ไม่แสดงเวลา เพราะเราเน้นเป็นวัน
+    });
+    
+    calendar.render();
+  });
+</script>
+
+<style>
+    /* ปรับแต่งหน้าตาปฏิทินเพิ่มเติม */
+    .fc-event {
+        cursor: pointer;
+        padding: 2px 5px;
+        font-weight: 600;
+        font-size: 0.85em;
+    }
+    .fc-toolbar-title {
+        font-size: 1.5em !important;
+        color: #2e7d32;
+    }
+    .fc-button-primary {
+        background-color: #4CAF50 !important;
+        border-color: #4CAF50 !important;
+    }
+</style>
 {% endblock %}

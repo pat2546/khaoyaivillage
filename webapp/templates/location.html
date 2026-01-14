@@ -1,8 +1,267 @@
 {% extends 'base.html' %}
+{% load static %} {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-{% block content %}
-<div style="text-align: center;">
-    <h2>สถานที่</h2>
-    <p>สนุกกับกิจกรรมวิถีเกษตรธรรมชาติที่เขาใหญ่ สำหรับทุกคนในครอบครัว</p>
+<style>
+    .location-container {
+        margin-top: 150px;
+        margin-bottom: 100px; /* เพิ่มระยะด้านล่างสุดของหน้า */
+        font-family: 'Sarabun', sans-serif;
+    }
+
+    .location-header {
+        text-align: center;
+        margin-bottom: 60px; /* เพิ่มระยะห่างจากหัวข้อหลัก */
+    }
+
+    .location-header h2 {
+        font-size: 2.5rem;
+        color: #2e7d32;
+        font-weight: bold;
+    }
+
+    /* ระยะห่างของแต่ละโซน */
+    .location-item {
+        margin-bottom: 80px; /* เพิ่มระยะห่างระหว่างโซน (ปรับตัวเลขได้ตามต้องการ) */
+        padding-bottom: 40px;
+    }
+
+    /* เส้นคั่นระหว่างโซน */
+    .section-divider {
+        border: 0;
+        border-top: 1px solid #eee;
+        margin: 60px auto;
+        width: 60%;
+    }
+
+    .image-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 25px; /* ระยะห่างระหว่างรูปกับคำบรรยายชื่อโซน */
+    }
+
+    @media (max-width: 768px) {
+        .image-row { grid-template-columns: 1fr; }
+    }
+
+    .img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        aspect-ratio: 16 / 9; 
+        background-color: #f4f4f4;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+        transition: transform 0.5s ease;
+    }
+
+    .img-wrapper:hover img {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    .location-description {
+        text-align: center;
+        color: #2e7d32;
+        font-size: 1.5rem; /* ขยายขนาดชื่อโซนเล็กน้อย */
+        font-weight: bold;
+        line-height: 1.6;
+    }
+
+    /* ปุ่มดาวน์โหลดใน Lightbox */
+    .glightbox-download-button {
+        color: #fff;
+        background: rgba(46, 125, 50, 0.9);
+        padding: 10px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99999;
+        font-family: 'Sarabun', sans-serif;
+    }
+</style>
+
+<div class="container location-container animate__animated animate__fadeIn">
+    <div class="location-header">
+        <h2>สถานที่</h2>
+        <p>สนุกกับกิจกรรมวิถีเกษตรธรรมชาติที่เขาใหญ่ สำหรับทุกคนในครอบครัว</p>
+        <hr style="width: 80px; border: 2px solid #2e7d32; margin: 20px auto;">
     </div>
+
+    <div class="location-item">
+        <div class="image-row">
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนสุพีเรีย1.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนสุพีเรีย1.jpg' %}" alt="โซนสุพีเรีย">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนสุพีเรีย2.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนสุพีเรีย2.jpg' %}" alt="โซนสุพีเรีย">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนสุพีเรีย3.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนสุพีเรีย3.jpg' %}" alt="โซนสุพีเรีย">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนสุพีเรีย4.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนสุพีเรีย4.jpg' %}" alt="โซนสุพีเรีย">
+                </a>
+            </div>
+        </div>
+        <div class="location-description">
+            โซนสุพีเรีย
+        </div>
+    </div>
+
+    <hr class="section-divider"> <div class="location-item">
+        <div class="image-row">
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบ้านนก1.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบ้านนก1.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบ้านนก2.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบ้านนก2.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบ้านนก3.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบ้านนก3.jpg' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบ้านนก4.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบ้านนก4.jpg' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+        </div>
+        <div class="location-description">
+            โซนบ้านนก
+        </div>
+    </div>
+    <hr class="section-divider"> <div class="location-item">
+        <div class="image-row">
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบังกะโล1.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบังกะโล1.jpg' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบังกะโล2.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบังกะโล2.jpg' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบังกะโล3.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบังกะโล3.jpg' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนบังกะโล4.jpg' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนบังกะโล4.jpg' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+        </div>
+        <div class="location-description">
+            โซนบังกะโล
+        </div>
+    </div>
+    <hr class="section-divider"> <div class="location-item">
+        <div class="image-row">
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคาบอย1.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคาบอย1.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคาบอย2.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคาบอย2.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคาบอย3.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคาบอย3.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคาบอย4.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคาบอย4.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+        </div>
+        <div class="location-description">
+            โซนคาบอย
+        </div>
+    </div>
+    <hr class="section-divider"> <div class="location-item">
+        <div class="image-row">
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคันทรี่1.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคันทรี่1.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคันทรี่2.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคันทรี่2.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคันทรี่3.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคันทรี่3.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+            <div class="img-wrapper">
+                <a href="{% static 'images/โซนคันทรี่4.JPG' %}" class="glightbox" data-gallery="location">
+                    <img src="{% static 'images/โซนคันทรี่4.JPG' %}" alt="โซนบ้านนก">
+                </a>
+            </div>
+        </div>
+        <div class="location-description">
+            โซนคันทรี
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    const lightbox = GLightbox({
+        selector: '.glightbox',
+        loop: true,
+    });
+
+    lightbox.on('slide_changed', ({ current }) => {
+        let downloadBtn = document.querySelector('.glightbox-download-button');
+        if (!downloadBtn) {
+            downloadBtn = document.createElement('a');
+            downloadBtn.className = 'glightbox-download-button';
+            downloadBtn.innerHTML = '<i class="fas fa-download"></i> ดาวน์โหลดรูปภาพ';
+            document.body.appendChild(downloadBtn);
+        }
+        downloadBtn.href = current.slideConfig.href;
+        downloadBtn.setAttribute('download', 'location_image.jpg');
+    });
+
+    lightbox.on('close', () => {
+        const downloadBtn = document.querySelector('.glightbox-download-button');
+        if (downloadBtn) downloadBtn.remove();
+    });
+</script>
 {% endblock %}
