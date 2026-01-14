@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -117,19 +118,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = "static/"
+# ส่วนของ Static files
+# ส่วนของ Static files
+STATIC_URL = '/static/'
+# เปลี่ยนชื่อโฟลเดอร์ปลายทางเป็น staticfiles เพื่อไม่ให้ซ้ำกับโฟลเดอร์ static ที่มีอยู่แล้ว
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
+# เพิ่มบรรทัดนี้เพื่อให้ Django รู้ว่าไฟล์ต้นฉบับอยู่ที่ไหน
 STATICFILES_DIRS = [
-    BASE_DIR / "webapp" / "static",
-] # <--- ต้องมีเครื่องหมายปิดก้ามปูตรงนี้ครับ!
+    os.path.join(BASE_DIR, 'webapp/static'),
+]
 
-# --- ส่วนนี้ต้องอยู่นอกก้ามปู และชิดซ้าย (ไม่มี Space ข้างหน้า) ---
-
-# URL สำหรับเข้าถึงไฟล์ที่อัปโหลดผ่านหน้าเว็บ
+# ส่วนของ Media files
 MEDIA_URL = '/media/'
-
-# Path จริงในเครื่องที่ใช้เก็บไฟล์รูปภาพ
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ค่าเริ่มต้นสำหรับ Primary Key
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
