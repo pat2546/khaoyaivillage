@@ -74,10 +74,10 @@ WSGI_APPLICATION = "khaoyaivillage.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'khaoyaivillage$db_khaoyai',  # ชื่อ DB ที่คุณสร้างในเมนู Databases
+        'NAME': 'khaoyaivillage$khaoyaivillage_db',  # ต้องใช้ชื่อนี้เท่านั้น
         'USER': 'khaoyaivillage',
-        'PASSWORD': 'Admin@1234', 
-        'HOST': 'khaoyaivillage.mysql.pythonanywhere-services.com', # ห้ามใช้ 127.0.0.1
+        'PASSWORD': 'Admin@1234', # ตรวจสอบให้ชัวร์ว่ารหัสนี้ตั้งไว้ในหน้า Databases
+        'HOST': 'khaoyaivillage.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 }
