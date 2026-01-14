@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-zb3pww1!b0=&inm2$pmxmv1scqkmn%((c_#5^+lxabh+fa0i-m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['khaoyaivillage.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['khaoyaivillage.pythonanywhere.com']
 
 # Application definition
 
@@ -74,11 +74,11 @@ WSGI_APPLICATION = "khaoyaivillage.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'khaoyaivillage_db',
-        'USER': 'root',               # ชื่อผู้ใช้งาน MySQL (ปกติคือ root)
-        'PASSWORD': '',    # ใส่รหัสผ่าน ถ้าไม่มีให้ใส่เป็นค่าว่าง ''
-        'HOST': '127.0.0.1',          # หรือ 'localhost'
-        'PORT': '3306',               # Port มาตรฐานของ MySQL
+        'NAME': 'khaoyaivillage$db_khaoyai',  # ชื่อ DB ที่คุณสร้างในเมนู Databases
+        'USER': 'khaoyaivillage',
+        'PASSWORD': 'Admin@1234', 
+        'HOST': 'khaoyaivillage.mysql.pythonanywhere-services.com', # ห้ามใช้ 127.0.0.1
+        'PORT': '3306',
     }
 }
 
