@@ -1,12 +1,8 @@
 from django.db import models
 
-# --- ข้อมูลฟาร์ม ---
 class FarmInfo(models.Model):
-    # โค้ดเดิมของคุณ (เช่น name, description ฯลฯ)
-    # หากมีฟิลด์อยู่แล้วให้ใส่กลับมาแทนที่ pass นะครับ
-    pass 
+    name = models.CharField(max_length=255, default="Khaoyai Village")
 
-# --- ระบบรูปภาพกิจกรรมโรงเรียน ---
 class School(models.Model):
     name = models.CharField(max_length=255, verbose_name="ชื่อโรงเรียน")
     date_info = models.CharField(max_length=100, verbose_name="วันที่ทำกิจกรรม")
